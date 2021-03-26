@@ -18,5 +18,5 @@ int main() {
 )
 
 func compiletocpp(code string) string {
-	return "Hello World"	
+	return "Hello World"
 }

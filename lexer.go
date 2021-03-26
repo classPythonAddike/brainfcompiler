@@ -5,11 +5,11 @@ package brainfcompiler
 // )
 
 type instruction struct {
-	inst string
+	inst      string
 	magnitude int
 }
 
-func makeInstruction (inst string, magn int) instruction {
+func makeInstruction(inst string, magn int) instruction {
 
 	return instruction{inst: inst, magnitude: magn}
 }
@@ -26,20 +26,20 @@ func iscmd(cmd string) bool {
 	return false
 }
 
-func lex (code string) []instruction {
-	
+func lex(code string) []instruction {
+
 	currentinstruct := string(code[0])
 	magnitude := 1
 	var instruct instruction
 	var instructionlist []instruction
 	var char = ""
-	
+
 	for _, chr := range code[1:] {
-		
+
 		char = string(chr)
 
 		if iscmd(char) {
-			
+
 			if char == currentinstruct && char != "[" && char != "]" {
 				// Increase the current magnitude, if the instruction is repeated
 				magnitude += 1
