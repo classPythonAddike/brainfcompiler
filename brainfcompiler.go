@@ -8,12 +8,16 @@ import (
 	"os/exec"
 )
 
-func Compile(file string, compiler string) {
+func Compile(file string, compiler string, output string) {
 
 	log.SetPrefix("BrainF Compiler:")
 
 	if file == "" {
-		log.Fatal("Error: No input files specified!")
+		log.Fatal("Error -  No input files specified!")
+	}
+
+	if output == "" {
+		log.Fatal("Error - No output files specified!")
 	}
 
 	log.Println("Reading file")
@@ -29,8 +33,8 @@ func Compile(file string, compiler string) {
 	log.Println("Writing to " + file + ".c")
 	writeFile(file+".c", transpiled)
 
-	log.Println("Compiling C code")
-	compileCPP(file, compiler)
+	log.Println("Compiling C code to " + output)
+	compileCPP(file, compiler, output)
 
 	log.Println("Done!")
 
@@ -67,8 +71,8 @@ func writeFile(filename string, code string) {
 	writer.Flush()
 }
 
-func compileCPP(filename string, compiler string) {
-	cmd := exec.Command(compiler, filename+".c", "-o", filename+".exe")
+func compileCPP(filename string, compiler string, output string) {
+	cmd := exec.Command(compiler, filename+".c", "-o", output)
 
 	_, err := cmd.Output()
 
