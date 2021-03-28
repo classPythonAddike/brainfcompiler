@@ -8,11 +8,11 @@ import (
 func TestCompileHelloWorld(t *testing.T) {
 	fmt.Println("\n----- Test a simple cat program -----")
 
-	compile("cat.bf", "gcc")
+	Compile("cat.bf", "gcc")
 }
 
 func TestCompileMandelbrot(t *testing.T) {
 	fmt.Println("\n----- Test a Mandelbrot Drawing Program -----")
 
-	compile("mandelbrot.bf", "gcc")
+	Compile("mandelbrot.bf", "gcc")
 }
