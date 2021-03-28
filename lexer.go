@@ -1,8 +1,8 @@
 package brainfcompiler
 
-// import (
+import (
 //	"fmt"
-// )
+)
 
 type instruction struct {
 	inst      string
@@ -42,7 +42,7 @@ func lex(code string) []instruction {
 
 			if char == currentinstruct && char != "[" && char != "]" {
 				// Increase the current magnitude, if the instruction is repeated
-				magnitude += 1
+				magnitude++
 
 			} else {
 
