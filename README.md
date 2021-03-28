@@ -37,6 +37,6 @@ func main() {
 
 You can invoke the script like this:
 ```sh
-> brainfcompiler.exe -file=filename.bf -out=filename.exe [-compiler="g++"]
+> brainfcompiler.exe -filename=filename.bf -out=filename.exe [-compiler="g++"]
 ```
 The compiler used by default is `gcc`. Supported compilers are `gcc` and `g++`
