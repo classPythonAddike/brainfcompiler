@@ -39,6 +39,8 @@ func transpile(code []instruction) string {
 			output += "while (memory_blocks[pointer]){"
 		case "]":
 			output += "}"
+		case "c":
+			output += "memory_blocks[pointer] = 0;"
 		}
 	}
 

@@ -18,18 +18,6 @@ func formatcode(code []instruction) string {
 	return result
 }
 
-func TestLexerBasic(t *testing.T) {
-	fmt.Println("\n----- Test whether the lexer runs without errors -----")
-
-	code := "[+-<.>]"
-	result := formatcode(lex(code))
-	want := "|[=1|+=1|-=1|<=1|.=1|>=1|]=1|"
-
-	if result != want {
-		t.Errorf("Got |%v|, want |%v|!", result, want)
-	}
-}
-
 func TestLexerShorten(t *testing.T) {
 	fmt.Println("\n----- Test whether the lexer can shorten code -----")
 
@@ -55,12 +43,13 @@ func TestNestedLoops(t *testing.T) {
 	}
 }
 
-func TestIgnoreCharacters(t *testing.T) {
-	fmt.Println("\n----- Test whether the lexer ignores characters that are not brainf commands -----")
+func TestClearCommand(t *testing.T) {
+	fmt.Println("\n----- Test whether the lexer implements clear commands -----")
 
-	code := "..[--akdjfdk..///>><=--uieui],"
+	code := ">>>>>>[>>>>>>>[-]>>]<<<<<<"
 	result := formatcode(lex(code))
-	want := "|.=2|[=1|-=2|.=2|>=2|<=1|-=2|]=1|,=1|"
+
+	want := "|>=6|[=1|>=7|c=1|>=2|]=1|<=6|"
 
 	if result != want {
 		t.Errorf("Got %v, want %v !", result, want)

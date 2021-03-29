@@ -1,7 +1,8 @@
 package brainfcompiler
 
 import (
-//	"fmt"
+	//	"fmt"
+	"strings"
 )
 
 type instruction struct {
@@ -14,19 +15,10 @@ func makeInstruction(inst string, magn int) instruction {
 	return instruction{inst: inst, magnitude: magn}
 }
 
-func iscmd(cmd string) bool {
-	var allowed = [8]string{"[", "]", ".", ",", ">", "<", "+", "-"}
-
-	for _, char := range allowed {
-		if char == cmd {
-			return true
-		}
-	}
-
-	return false
-}
-
 func lex(code string) []instruction {
+
+	code = strings.Replace(code, "[-]", "c", -1)
+	code = strings.Replace(code, "[+]", "c", -1) // Clear cell
 
 	currentinstruct := string(code[0])
 	magnitude := 1
@@ -38,20 +30,17 @@ func lex(code string) []instruction {
 
 		char = string(chr)
 
-		if iscmd(char) {
+		if char == currentinstruct && char != "[" && char != "]" && char != "c" {
+			// Increase the current magnitude, if the instruction is repeated
+			magnitude++
 
-			if char == currentinstruct && char != "[" && char != "]" {
-				// Increase the current magnitude, if the instruction is repeated
-				magnitude++
+		} else {
 
-			} else {
-
-				// Jump out of the current instruction, add it to the slice of instructions
-				instruct = makeInstruction(currentinstruct, magnitude)
-				instructionlist = append(instructionlist, instruct)
-				currentinstruct = char
-				magnitude = 1
-			}
+			// Jump out of the current instruction, add it to the slice of instructions
+			instruct = makeInstruction(currentinstruct, magnitude)
+			instructionlist = append(instructionlist, instruct)
+			currentinstruct = char
+			magnitude = 1
 		}
 	}
 

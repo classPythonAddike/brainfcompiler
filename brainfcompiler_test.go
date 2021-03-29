@@ -14,5 +14,5 @@ func TestCompileHelloWorld(t *testing.T) {
 func TestCompileMandelbrot(t *testing.T) {
 	fmt.Println("\n----- Test a Mandelbrot Drawing Program -----")
 
-	Compile("mandelbrot.bf", "gcc", "cat.exe")
+	Compile("mandelbrot.bf", "gcc", "mandelbrot.exe")
 }
