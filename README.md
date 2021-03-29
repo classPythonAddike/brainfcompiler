@@ -31,7 +31,7 @@ func main() {
 }
 ```
 
-3. If you don't want to use the CLI, you can always invoke it from a script! You just need to download this package with `go get https://github.com/classPythonAddike/brainfcompiler` and then use the `Compile` function to compile a BrainF program.
+3. If you don't want to use the CLI, you can always invoke it from a script! You just need to download this package with `go get github.com/classPythonAddike/brainfcompiler` and then use the `Compile` function to compile a BrainF program.
 
 ## Usage
 
