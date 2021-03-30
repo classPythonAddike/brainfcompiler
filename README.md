@@ -8,7 +8,7 @@ As of now, this compiler is able to draw a mandelbrot set in 11 seconds. take a 
 
 ## Setup
 
-1. If you are on windows, you can go to the Releases tab to download the latest release.
+1. If you are on Windows or Debian, you can go to the Releases tab to download the latest release.
 
 2. If you are on a different operating system, you will need to compile it on your machine (hopefully I will be able to do it for you in a few days). Create a file named `main.go` and paste the following code into it:
 ```go
