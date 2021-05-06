@@ -2,14 +2,8 @@ package brainfcompiler
 
 import "fmt"
 
-var template = `
-#include <stdio.h>
-
-char memory_blocks[30000] = {0};
-int pointer = 0;
-
-int main() {
-`
+var template = `#include <stdio.h>
+char m[30000]={0};int p=0;int o=30000;int main(){`
 
 func transpile(code []instruction) string {
 
@@ -24,25 +18,25 @@ func transpile(code []instruction) string {
 		switch chr {
 
 		case ">":
-			output += fmt.Sprintf("pointer += %v;pointer = pointer", char.magnitude) + " % 30000;"
+			output += fmt.Sprintf("p+=%v;p=p", char.magnitude) + "%" + "o;"
 		case "<":
-			output += fmt.Sprintf("pointer -= %v;pointer = pointer", char.magnitude) + " % 30000;"
+			output += fmt.Sprintf("p-=%v;p=p", char.magnitude) + "%" + "o;"
 		case ".":
-			output += "putchar(memory_blocks[pointer]);"
+			output += "putchar(m[p]);"
 		case ",":
-			output += "memory_blocks[pointer]=getchar();"
+			output += "m[p]=getchar();"
 		case "+":
-			output += fmt.Sprintf("memory_blocks[pointer] += %v;", char.magnitude)
+			output += fmt.Sprintf("m[p]+=%v;", char.magnitude)
 		case "-":
-			output += fmt.Sprintf("memory_blocks[pointer] -= %v;", char.magnitude)
+			output += fmt.Sprintf("m[p]-=%v;", char.magnitude)
 		case "[":
-			output += "while (memory_blocks[pointer]){"
+			output += "while(m[p]){"
 		case "]":
 			output += "}"
 		case "c":
-			output += "memory_blocks[pointer] = 0;"
+			output += "m[p]=0;"
 		}
 	}
 
-	return template + output + "\n}"
+	return template + output + "}"
 }
