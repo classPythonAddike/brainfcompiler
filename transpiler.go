@@ -7,7 +7,7 @@ char m[30000]={0};int p=0;int o=30000;int main(){`
 
 func transpile(code []instruction) string {
 
-	// Convert brainf to C++ code
+	// Convert brainf to C code
 
 	output := ""
 

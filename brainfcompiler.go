@@ -2,7 +2,6 @@ package brainfcompiler
 
 import (
 	"bufio"
-	//"io/ioutil"
 	"log"
 	"os"
 	"os/exec"

@@ -1,6 +1,6 @@
 # BrainF Compiler
 
-This is a BrainF Compiler written in Golang. It converts BrainF code to C++ code, and then finally machine language, thus generating an executable. My aim is for it to be the fastest BrainF executor I've written yet.
+This is a BrainF Compiler written in Golang. It converts BrainF code to C code, and then finally machine language, thus generating an executable. My aim is for it to be the fastest BrainF executor I've written yet.
 
 As of now, this compiler is able to draw a mandelbrot set in 11 seconds. take a look at [mandelbrot.bf](/mandelbrot.bf) for the program
 
